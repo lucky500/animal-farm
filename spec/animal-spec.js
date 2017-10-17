@@ -6,6 +6,7 @@ describe("Animal", function(){
 
   beforeEach(function() {
     jasmine.clock().install();
+    lion.foodLevel = 10;
     lion.setHunger();
   });
 
@@ -23,6 +24,10 @@ describe("Animal", function(){
     expect(lion.foodLevel).toEqual(7);
   });
 
-
+  it('should add 10 points to food level when clicked', function(){
+    jasmine.clock().tick(9001);
+    lion.feed();
+    expect(lion.foodLevel).toEqual(10);
+  });
 
 });

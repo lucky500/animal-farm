@@ -1,13 +1,17 @@
 export class Animal {
   constructor(name, foodLevel){
     this.name = name;
-    this.foodLevel = 10;
+    this.foodLevel = foodLevel;
   }
 
-  setHunger(){
+  setHunger(foodLevel){
     setInterval(() => {
       this.foodLevel--;
     }, 1000);
+  }
+
+  feed(foodLevel){
+    return this.foodLevel += 10;
   }
 
 };
