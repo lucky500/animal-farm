@@ -26,8 +26,8 @@ var Animal = exports.Animal = function () {
 
       this.pauseLevel = setInterval(function () {
         _this.healthLevel--;
-        if (_this.healthLevel <= 29) {
-          var healthAlert = "My energy is running low";
+        if (_this.healthLevel === 10) {
+          alert("My energy is running low");
         }
       }, 3000);
     }

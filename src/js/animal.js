@@ -9,8 +9,8 @@ export class Animal {
   setHunger(healthLevel){
     this.pauseLevel = setInterval(() => {
       this.healthLevel--;
-      if(this.healthLevel <= 29){
-        let healthAlert = "My energy is running low";
+      if(this.healthLevel === 10){
+        alert("My energy is running low");
       }
     }, 3000);
   }
