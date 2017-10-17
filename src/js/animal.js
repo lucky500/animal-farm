@@ -1,17 +1,30 @@
 export class Animal {
-  constructor(name, foodLevel){
+  constructor(name, healthLevel, pauseLevel, healthAlert){
     this.name = name;
-    this.foodLevel = foodLevel;
+    this.healthLevel = healthLevel;
+    this.pauseLevel = pauseLevel;
+    this.healthAlert = healthAlert;
   }
 
-  setHunger(foodLevel){
-    setInterval(() => {
-      this.foodLevel--;
-    }, 1000);
+  setHunger(healthLevel){
+    this.pauseLevel = setInterval(() => {
+      this.healthLevel--;
+      if(this.healthLevel <= 29){
+        let healthAlert = "My energy is running low";
+      }
+    }, 3000);
   }
 
-  feed(foodLevel){
-    return this.foodLevel += 10;
+  feed(healthLevel){
+    return this.healthLevel += 10;
+  }
+
+  sleep(healthLevel){
+    clearInterval(this.pauseLevel);
+  }
+
+  waken(healthLevel){
+    this.setHunger();
   }
 
 };

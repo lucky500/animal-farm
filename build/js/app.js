@@ -10,26 +10,41 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Animal = exports.Animal = function () {
-  function Animal(name, foodLevel) {
+  function Animal(name, healthLevel, pauseLevel, healthAlert) {
     _classCallCheck(this, Animal);
 
     this.name = name;
-    this.foodLevel = foodLevel;
+    this.healthLevel = healthLevel;
+    this.pauseLevel = pauseLevel;
+    this.healthAlert = healthAlert;
   }
 
   _createClass(Animal, [{
     key: "setHunger",
-    value: function setHunger(foodLevel) {
+    value: function setHunger(healthLevel) {
       var _this = this;
 
-      setInterval(function () {
-        _this.foodLevel--;
-      }, 1000);
+      this.pauseLevel = setInterval(function () {
+        _this.healthLevel--;
+        if (_this.healthLevel <= 29) {
+          var healthAlert = "My energy is running low";
+        }
+      }, 3000);
     }
   }, {
     key: "feed",
-    value: function feed(foodLevel) {
-      return this.foodLevel += 10;
+    value: function feed(healthLevel) {
+      return this.healthLevel += 10;
+    }
+  }, {
+    key: "sleep",
+    value: function sleep(healthLevel) {
+      clearInterval(this.pauseLevel);
+    }
+  }, {
+    key: "waken",
+    value: function waken(healthLevel) {
+      this.setHunger();
     }
   }]);
 
@@ -46,31 +61,36 @@ var Animal = exports.Animal = function () {
 var _animal = require('./../js/animal.js');
 
 $(document).ready(function () {
-  var newAnimal = void 0;
+  var animalName = $('.animal').val();
+  var newAnimal = new _animal.Animal(animalName, 30);
+
+  $('.test').html(newAnimal.healthAlert);
 
   $('.name').on('click', function () {
-    var animalName = $('.animal').val();
-    newAnimal = new _animal.Animal(animalName, 30);
 
+    $('.animal-name').text(animalName);
     var foodLevelOut = newAnimal.setHunger();
-    console.log('initial', newAnimal);
-    //debugger;
-    //let initialFoodLevel = 10;
-    foodLevelOut = newAnimal.setHunger();
-    console.log('food', foodLevelOut);
-    console.log('food:', newAnimal.foodLevel);
-
-    console.log('foodLevel: 2', foodLevelOut);
+    $('.health-result').html(newAnimal.healthLevel);
   });
 
   $('.health').click(function () {
-    console.log('food:', newAnimal.foodLevel);
+    $('.health-result').text(newAnimal.healthLevel);
+    console.log(newAnimal.healthLevel);
   });
 
   $('.feed-btn').click(function () {
     var test1 = newAnimal.feed();
-    console.log('test1:', test1);
-    console.log('food:', newAnimal.foodLevel);
+    console.log('health:', newAnimal.healthLevel);
+  });
+
+  $('.sleep-btn').click(function () {
+    newAnimal.sleep();
+    console.log(newAnimal.healthLevel);
+  });
+
+  $('.wake-up-btn').click(function () {
+    newAnimal.waken();
+    console.log(newAnimal.healthLevel);
   });
 });
 

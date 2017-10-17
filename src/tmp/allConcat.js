@@ -1,31 +1,37 @@
 import { Animal } from './../js/animal.js';
 
 $(document).ready(function() {
-   let newAnimal;
+  let animalName = $('.animal').val();
+   let newAnimal = new Animal(animalName, 30);
+
+   $('.test').html(newAnimal.healthAlert);
 
   $('.name').on('click', function(){
-    let animalName = $('.animal').val();
-    newAnimal = new Animal(animalName, 30);
 
+    $('.animal-name').text(animalName);
     var foodLevelOut = newAnimal.setHunger();
-    console.log('initial', newAnimal);
-    //debugger;
-    //let initialFoodLevel = 10;
-    foodLevelOut = newAnimal.setHunger();
-     console.log('food', foodLevelOut);
-     console.log('food:', newAnimal.foodLevel);
+    $('.health-result').html(newAnimal.healthLevel);
 
-    console.log('foodLevel: 2', foodLevelOut);
   });
 
   $('.health').click(function() {
-    console.log('food:', newAnimal.foodLevel);
+    $('.health-result').text(newAnimal.healthLevel);
+    console.log(newAnimal.healthLevel);
   });
 
   $('.feed-btn').click(function() {
     let test1 = newAnimal.feed()
-    console.log('test1:', test1);
-    console.log('food:', newAnimal.foodLevel);
+    console.log('health:', newAnimal.healthLevel);
+  });
+
+  $('.sleep-btn').click(function() {
+    newAnimal.sleep();
+    console.log(newAnimal.healthLevel);
+  });
+
+  $('.wake-up-btn').click(function(){
+    newAnimal.waken();
+    console.log(newAnimal.healthLevel);
   });
 
 });

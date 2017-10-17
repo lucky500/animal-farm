@@ -1,14 +1,14 @@
-# _Galactic Age Calculator_
+# _Animal Farm_
 
 ![image]()
 
-#### _An application to track your age in throughout the galaxy!_
+#### _An application to create an animal and care for it!_
 
-#### By _**Luciano Oliveira**_
+#### By _**Luciano Oliveira and Safiy Cham**_
 
 ## Description
 
-This web application allows users to enter their age and it will convert into seconds. It will also determined how far is your birthday in seconds, and how old you are if you live in different planets!.
+This web application allows users to create an animal with a name, and do things like feeding to keep it alive.
 
 ## Specifications
 * User will give a name to an animal.
@@ -30,7 +30,7 @@ This web application allows users to enter their age and it will convert into se
 
 * _In terminal, navigate into where you would like this project to live._
 
-* _In your terminal enter:_ ``` $ git clone https://github.com/lucky500/galactic-age-calculator.git ```
+* _In your terminal enter:_ ``` $ git clone https://github.com/lucky500/animal-farm.git ```
 
 * _In your terminal enter:_ ``` $ npm install ```
 
@@ -50,14 +50,14 @@ _There are no known bugs at this time._
 
 ## Support and contact details
 
-_Feel free to contact me at luciano101@msn.com_
+_Feel free to contact us at luciano101@msn.com and csafi13@yahoo.com_
 
 ## Technologies Used
 
-_HTML, CSS, Bootstrap, ActiveRecord, Postgres_
+_HTML, CSS, Bootstrap, Javascript, Jasmine, Karma, NPM, Gulp
 
 ### License
 
 *This software is licensed under the MIT license.*
 
-Copyright (c) 2017 **_Luciano Oliveira_**
+Copyright (c) 2017 **_Luciano Oliveira and Safiy Cham_**
